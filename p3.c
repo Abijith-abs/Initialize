@@ -16,16 +16,15 @@ int main()
     scanf("%d %d", &m, &n);
     int matrix[m][n];
     printf("Enter the elements of the matrix: ");
-    for (int i = 1; i <= m; i++)
-        for (int j = 1; j <= n; j++)
+    for (int i = 0; i < m; i++)
+        for (int j = 0; j < n; j++)
             scanf("%d", &matrix[i][j]);
 
     int number_of_non_zero_elements = 0;
-    s_matrix[1].row = m;
-    s_matrix[1].col = n;
-    int z=1;
-    for (int i = 1; i <= m; i++)
-        for (int j = 1; j <= n; j++)
+    s_matrix[0].row = m;
+    s_matrix[0].col = n;
+    for (int i = 0, z = 1; i < m; i++)
+        for (int j = 0; j < n; j++)
         {
             if (matrix[i][j] != 0)
             {
@@ -41,9 +40,22 @@ int main()
     float sparsity = (float)(s_matrix[0].row * s_matrix[0].col - s_matrix[0].value) / (s_matrix[0].row * s_matrix[0].col);
     printf("Sparsity = %0.3f\n", sparsity);
 
-     printf("Sparse matrix representation\n");
-     for (int i = 1; i <= number_of_non_zero_elements; i++)
-         printf("%d %d %d\n", s_matrix[i].row, s_matrix[i].col, s_matrix[i].value);
+    printf("Sparse matrix representation\n");
+    for (int i = 0; i <= number_of_non_zero_elements; i++)
+        printf("%d %d %d\n", s_matrix[i].row, s_matrix[i].col, s_matrix[i].value);
 
-     return (0);
+    // int recon_matrix[s_matrix[0].row][s_matrix[0].col];
+    // for (int i = 0; i < s_matrix[0].row; i++)
+    //     for (int j = 0; j < s_matrix[0].col; j++)
+    //         recon_matrix[i][j] = 0;
+    // for (int z = 0; z < s_matrix[0].value; z++)
+    //     recon_matrix[s_matrix[z].row][s_matrix[z].col] = s_matrix[z].value;
+
+    // printf("Reconstructed matrix");
+    // for (int i = 0; i < s_matrix[0].row; i++)
+    // {
+    //     for (int j = 0; j < s_matrix[0].col; j++)
+    //         printf("%d ", recon_matrix[i][j]);
+    //     printf("\n");
+    // }
 }
